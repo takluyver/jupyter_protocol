@@ -351,7 +351,6 @@ class Session(object):
             raise TypeError("malformed message, must have at least %i elements"%minlen)
         header = json_unpacker(msg_list[1])
         message['header'] = extract_dates(header)
-        print(header)
         message['parent_header'] = extract_dates(json_unpacker(msg_list[2]))
         message['metadata'] = json_unpacker(msg_list[3])
         if content:
