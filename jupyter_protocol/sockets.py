@@ -95,6 +95,7 @@ class MessagingBase:
             else:
                 raise
 
+        print('recvd raw', raw_msg)
         return self.session.deserialize(raw_msg, content=content, copy=copy)
 
     def send(self, channel, msg, *, track=False):
@@ -144,6 +145,7 @@ class MessagingBase:
                 raise ValueError("Buffer %i (%r) is not contiguous" % (idx, buf))
 
         to_send = self.session.serialize(msg)
+        print(to_send)
         longest = max([ len(s) for s in to_send ])
         copy = (longest < self.copy_threshold)
 

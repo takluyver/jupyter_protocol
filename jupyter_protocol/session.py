@@ -228,7 +228,7 @@ class Session(object):
         if self.adapt_version:
             msg_dict = adapt(msg_dict, self.adapt_version)
 
-        header = msg_dict['header'].copy()
+        header = msg_dict['header'] #.copy()
         header['session'] = self.session_id
         header['username'] = self.username
 

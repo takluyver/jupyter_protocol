@@ -9,11 +9,11 @@ from unittest import TestCase
 
 from jupyter_protocol.adapter import adapt, V4toV5, V5toV4, code_to_line
 from jupyter_protocol.session import Session
+from jupyter_protocol.messages import Message, kernel_info_request
 
 
 def test_default_version():
-    s = Session()
-    msg = s.msg("msg_type")
+    msg = kernel_info_request().make_dict()
     msg['header'].pop('version')
     original = copy.deepcopy(msg)
     adapted = adapt(original)
@@ -27,7 +27,7 @@ def test_code_to_line_no_code():
 class AdapterTest(TestCase):
 
     def setUp(self):
-        self.session = Session()
+        self.session = Session(key=b'')
 
     def adapt(self, msg, version=None):
         original = copy.deepcopy(msg)
@@ -44,7 +44,7 @@ class V4toV5TestCase(AdapterTest):
 
     def msg(self, msg_type, content):
         """Create a v4 msg (same as v5, minus version header)"""
-        msg = self.session.msg(msg_type, content)
+        msg = Message.from_type(msg_type, content).make_dict()
         msg['header'].pop('version')
         return msg
 
@@ -236,7 +236,7 @@ class V5toV4TestCase(AdapterTest):
     to_version = 4
 
     def msg(self, msg_type, content):
-        return self.session.msg(msg_type, content)
+        return Message.from_type(msg_type, content).make_dict()
 
     def test_same_version(self):
         msg = self.msg("execute_result",
