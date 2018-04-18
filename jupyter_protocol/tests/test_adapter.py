@@ -7,8 +7,8 @@ import copy
 import json
 from unittest import TestCase
 
-from jupyter_client.adapter import adapt, V4toV5, V5toV4, code_to_line
-from jupyter_client.session import Session
+from jupyter_protocol.adapter import adapt, V4toV5, V5toV4, code_to_line
+from jupyter_protocol.session import Session
 
 
 def test_default_version():

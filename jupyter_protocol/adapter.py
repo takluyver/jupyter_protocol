@@ -383,7 +383,7 @@ def adapt(msg, to_version=protocol_version_info[0]):
     msg : dict
         A Jupyter message appropriate in the new version.
     """
-    from .session import utcnow
+    from .messages import utcnow
     header = msg['header']
     if 'date' not in header:
         header['date'] = utcnow()

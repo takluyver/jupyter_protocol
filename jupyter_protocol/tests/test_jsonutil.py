@@ -15,8 +15,8 @@ except ImportError:
     import mock
 
 from dateutil.tz import tzlocal, tzoffset
-from jupyter_client import jsonutil
-from jupyter_client.session import utcnow
+from jupyter_protocol import jsonutil
+from jupyter_protocol.messages import utcnow
 
 
 def test_extract_dates():

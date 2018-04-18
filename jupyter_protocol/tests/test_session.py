@@ -20,8 +20,9 @@ import zmq
 from zmq.tests import BaseZMQTestCase
 from zmq.eventloop.zmqstream import ZMQStream
 
-from jupyter_client import session as ss
-from jupyter_client import jsonutil
+from jupyter_protocol import session as ss
+from jupyter_protocol import jsonutil
+from jupyter_protocol.messages import utcnow
 
 from ipython_genutils.py3compat import string_types
 
@@ -282,8 +283,8 @@ class TestSession(SessionTestCase):
             session = ss.Session(unpack=lambda b: 5)
 
     def _datetime_test(self, session):
-        content = dict(t=ss.utcnow())
-        metadata = dict(t=ss.utcnow())
+        content = dict(t=utcnow())
+        metadata = dict(t=utcnow())
         p = session.msg('msg')
         msg = session.msg('msg', content=content, metadata=metadata, parent=p['header'])
         smsg = session.serialize(msg)
