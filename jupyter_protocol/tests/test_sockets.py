@@ -95,12 +95,12 @@ class SocketsTestCase(BaseZMQTestCase):
         assert isinstance(msg.tracker, zmq.MessageTracker)
 
         msg2 = Message.from_type('test_xmpl', {})
-        M = zmq.Frame(b'hi there', track=True)
-        msg2.buffers = [M]
+        msg2.buffers = [zmq.Frame(b'hi there', track=True, copy=False)]
         messaging.send('A', msg2, track=True)
         t = msg2.tracker
         assert isinstance(t, zmq.MessageTracker)
+        assert t is not DONE
         with pytest.raises(zmq.NotDone):
             t.wait(.1)
-        del M
-        t.wait(1) # this will raise
+        del msg2
+        t.wait(1)
