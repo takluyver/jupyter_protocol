@@ -7,7 +7,7 @@
 from __future__ import print_function
 
 # the name of the project
-name = 'jupyter_client'
+name = 'jupyter_protocol'
 
 #-----------------------------------------------------------------------------
 # Minimal Python version sanity check
