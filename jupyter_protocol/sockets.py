@@ -145,7 +145,7 @@ class MessagingBase:
                 raise ValueError("Buffer %i (%r) is not contiguous" % (idx, buf))
 
         to_send = self.session.serialize(msg)
-        print(to_send)
+        #print(to_send)
         longest = max([ len(s) for s in to_send ])
         copy = (longest < self.copy_threshold)
 
