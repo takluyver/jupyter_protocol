@@ -10,9 +10,7 @@ exclude docs/\#*
 graft examples
 
 # docs subdirs we want to skip
-prune docs/build
-prune docs/gh-pages
-prune docs/dist
+prune docs/_build
 
 # Patterns to exclude from any directory
 global-exclude *~
@@ -20,3 +18,4 @@ global-exclude *.pyc
 global-exclude *.pyo
 global-exclude .git
 global-exclude .ipynb_checkpoints
+global-exclude *.egg-info/*
