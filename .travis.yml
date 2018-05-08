@@ -7,6 +7,6 @@ install:
   - pip install --upgrade setuptools pip
   - pip install --upgrade --pre -e .[test] pytest-cov pytest-warnings codecov
 script:
-  - py.test --cov jupyter_client jupyter_client
+  - py.test --cov jupyter_protocol jupyter_protocol
 after_success:
   - codecov
