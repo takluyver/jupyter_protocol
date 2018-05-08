@@ -374,4 +374,5 @@ class Session(object):
         """
         idents, msg_list = self.feed_identities(raw_msg, copy)
         msg_dict = self.deserialize_msg_parts(msg_list, content=content, copy=copy)
-        return Message(**msg_dict, idents=idents)
+        msg_dict['idents'] = idents
+        return Message(**msg_dict)
