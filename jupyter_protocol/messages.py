@@ -228,7 +228,8 @@ def inspect_reply(found: bool, data: dict, metadata=None, *, parent=None):
     }, parent_msg=parent)
 
 def history_request(raw=True, output=False, hist_access_type='range',
-                    session=0, start=0, stop=None, n=0, pattern=''):
+                    session=0, start=0, stop=None, n=0, pattern='',
+                    unique=False):
     """Get entries from the kernel's history list.
 
     Parameters
@@ -251,10 +252,12 @@ def history_request(raw=True, output=False, hist_access_type='range',
         The final (excluded) line number of a history range.
 
     n : int
-        The number of lines of history to get for a tail request.
+        The number of lines of history to get for a tail/search request.
 
     pattern : str
         The glob-syntax pattern for a search request.
+    unique : bool
+        Exclude duplicate entries from search results.
     """
     content = {
         'hist_access_type': hist_access_type,
@@ -272,7 +275,11 @@ def history_request(raw=True, output=False, hist_access_type='range',
         content['n'] = n
     elif hist_access_type == 'search':
         assert pattern != ''
-        content['pattern'] = pattern
+        content.update({
+            'pattern': pattern,
+            'n': n or None,
+            'unique': unique,
+        })
     else:
         ValueError("Unknown hist_access_type %r" % hist_access_type)
 
