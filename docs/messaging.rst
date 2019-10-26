@@ -25,7 +25,7 @@ The current version of the specification is 5.3.
 
 .. note::
    *New in* and *Changed in* messages in this document refer to versions of the
-   **Jupyter message specification**, not versions of :mod:`jupyter_client`.
+   **Jupyter message specification**, not versions of :mod:`jupyter_protocol`.
 
 Introduction
 ============
@@ -163,13 +163,13 @@ The Wire Protocol
 
 This message format exists at a high level,
 but does not describe the actual *implementation* at the wire level in zeromq.
-The canonical implementation of the message spec is our :class:`~jupyter_client.session.Session` class.
+The canonical implementation of the message spec is our :class:`~jupyter_protocol.session.Session` class.
 
 .. note::
 
     This section should only be relevant to non-Python consumers of the protocol.
     Python consumers should simply import and the use implementation of the wire
-    protocol in :class:`jupyter_client.session.Session`.
+    protocol in :class:`jupyter_protocol.session.Session`.
 
 Every message is serialized to a sequence of at least six blobs of bytes:
 
