@@ -11,4 +11,4 @@ Changes in Jupyter Protocol
 
 
 Note: Because the code in this repository originated from jupyter_client you may 
-also want to look at its `release and changelog history <https://github.com/jupyter/jupyter_client/milestones/4.1>`__
+also want to look at its `changelog history <https://jupyter-client.readthedocs.io/en/latest/changelog.html>`_.
