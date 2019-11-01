@@ -1,4 +1,4 @@
-"""Testing utils for jupyter_client tests
+"""Testing utils for jupyter_protocol tests
 
 """
 import os

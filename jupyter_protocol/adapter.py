@@ -6,7 +6,7 @@
 import re
 import json
 
-from jupyter_client import protocol_version_info
+from jupyter_protocol import protocol_version_info
 
 def code_to_line(code, cursor_pos):
     """Turn a multiline code block and cursor position into a single line
