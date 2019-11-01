@@ -1,4 +1,4 @@
-name: jup_client
+name: jup_protocol
 channels:
   - conda-forge
 dependencies:
