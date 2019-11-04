@@ -14,10 +14,10 @@ import warnings
 
 from zmq.utils import jsonapi
 
-from jupyter_client.jsonutil import extract_dates, date_default
+from jupyter_protocol.jsonutil import extract_dates, date_default
 from ipython_genutils.py3compat import (str_to_bytes, unicode_type,)
 
-from jupyter_client.adapter import adapt
+from jupyter_protocol.adapter import adapt
 from traitlets.log import get_logger
 from .messages import Message
 

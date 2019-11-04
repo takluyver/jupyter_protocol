@@ -1,4 +1,4 @@
-"""Test the jupyter_client public API
+"""Test the jupyter_protocol public API
 """
 
 # Copyright (c) Jupyter Development Team.
